@@ -77,6 +77,7 @@ audit_elasticsearch_port=$(get_prop 'audit_elasticsearch_port' $PROPFILE)
 audit_elasticsearch_user=$(get_prop 'audit_elasticsearch_user' $PROPFILE)
 audit_elasticsearch_password=$(get_prop 'audit_elasticsearch_password' $PROPFILE)
 audit_elasticsearch_index=$(get_prop 'audit_elasticsearch_index' $PROPFILE)
+audit_elasticsearch_protocol=$(get_prop 'audit_elasticsearch_protocol' $PROPFILE)
 audit_elasticsearch_bootstrap_enabled=$(get_prop 'audit_elasticsearch_bootstrap_enabled' $PROPFILE)
 audit_solr_urls=$(get_prop 'audit_solr_urls' $PROPFILE)
 audit_solr_user=$(get_prop 'audit_solr_user' $PROPFILE)
@@ -739,6 +740,10 @@ update_properties() {
 
 		propertyName=ranger.audit.elasticsearch.index
 		newPropertyValue=${audit_elasticsearch_index}
+		updatePropertyToFilePy $propertyName $newPropertyValue $to_file_ranger
+
+		propertyName=ranger.audit.elasticsearch.protocol
+		newPropertyValue=${audit_elasticsearch_protocol}
 		updatePropertyToFilePy $propertyName $newPropertyValue $to_file_ranger
 
 		propertyName=ranger.audit.elasticsearch.bootstrap.enabled
